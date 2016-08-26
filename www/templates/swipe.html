@@ -1,0 +1,44 @@
+<ion-view view-title="SwipeCards" ng-controller="CardsCtrl">
+ <ion-content scroll="false">
+ 		
+    <div class="row">
+      <div class="col">
+     		<h3 class="text-center app-color-pri">Jobs based on your preferences!</h3>
+     		<h4 class="text-center">Swipe to discard or save for later. For better results, upload your resume.</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+      		<div ng-controller="ModalCtrl">
+      	 		<div class="button-bar">
+      			  <a href="#/settings" class="button button-small button-outline button-assertive">Edit your preferences.</a>
+      			  <a class="button button-small button-outline button-assertive" ng-click="modal.show()">Upload Resume</a>
+      			</div>
+      		</div>
+      </div>
+    </div>
+
+ 		<div class="card-container">
+     		<td-cards>
+          <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-end="alert('hi')" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)" class="card-{{$index}}">
+            <div class="image" ng-controller="CardCtrl">
+              <div class="remove-job"><i class="ion-close-circled"></i></div>
+              <img ng-src="{{card.image}}">
+              <div class="save-job"><i class="ion-ios-heart"></i></div>
+            </div>
+          </td-card>
+        </td-cards>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="button-bar">
+          <a href="#/q3" class="button button-outline button-block button-stable">Back</a>
+          <a href="#/saved" class="button button-outline button-block button-stable">View Saved</a>
+        </div>
+      </div>
+    </div>
+
+ </ion-content>
+</ion-view>

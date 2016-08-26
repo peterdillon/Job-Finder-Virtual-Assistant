@@ -1,0 +1,28 @@
+    <ion-pane class="messaging-view padding" ng-controller="Messages">
+    
+    <ion-content class="content-stable" on-swipe-left="hideTime = false" on-swipe-right="hideTime = true">
+    
+      <!-- Default welcome question -->
+      <div class="messages other">
+        <div class="message slide-right">
+          <span>Thank you for choosing Adecco Virtual Assistant! Please enter the job title you are looking for.</span>
+        </div>
+        <div class="time">{{message.time}}</div>
+      </div>
+
+      <div ng-repeat="message in messages" ng-class="{other: message.userId != myId}" class="messages">
+        <div  class="message" ng-class="{'slide-right': hideTime, '': !hideTime}">
+          <span>{{ message.text }}</span>
+        </div>
+        <div class="time" ng-class="{'slide-right': hideTime, '': !hideTime}">{{message.time}}</div>
+      </div>
+
+    </ion-content>
+
+    <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Type your message" on-return="sendMessage(); closeKeyboard()" ng-model="data.message" on-focus="inputUp()" on-blur="inputDown()" />
+      </label>
+      <button class="button button-clear app-color" ng-click="sendMessage()">Send</button>
+    </ion-footer-bar>
+  </ion-pane>

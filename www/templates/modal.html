@@ -1,0 +1,29 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-stable">
+	  <h1 class="title">Create Profile</h1>
+	  <button class="button button-clear button-primary icon ion-close-circled" ng-click="modal.hide()"></button>
+	</ion-header-bar>
+	<ion-content class="padding">
+	<h5>For better job results, upload a resume!</h5>
+	  <div class="list">
+	    <label class="item item-input">
+	      <span class="input-label">First Name</span>
+	      <input ng-model="newUser.firstName" type="text">
+	    </label>
+	    <label class="item item-input">
+	      <span class="input-label">Last Name</span>
+	      <input ng-model="newUser.lastName" type="text">
+	    </label>
+	    <label class="item item-input">
+	      <span class="input-label">Email</span>
+	      <input ng-model="newUser.email" type="text">
+	    </label>
+	    <label class="item item-input">
+	      <input type="file" id="browse" name="fileupload" style="display: none" onChange="handleChange();"/>
+		  <input type="text" id="filename" readonly="true"/>
+		  <input type="button" class="button button-stable" value="Add Resume" id="fakeBrowse" onclick="handleBrowseClick();"/>		
+	    </label>
+	    <button class="button button-full button-assertive" ng-click="createContact(newUser)">Upload and Create Profile</button>
+	  </div>
+	</ion-content>
+</ion-modal-view>
