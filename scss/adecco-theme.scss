@@ -47,11 +47,14 @@
   height: 55px;
 }
 
+.my-padding {
+  padding: 20px 0 !important;
+}
 
 // Swipe Job Cards
 .card-container {
-  margin-top: 2rem;
-  height: 15rem;
+  margin-top: .5rem;
+  height: 13.5rem;
 }
 td-cards {
   display: block;

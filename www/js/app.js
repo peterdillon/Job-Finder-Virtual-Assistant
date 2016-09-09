@@ -29,9 +29,21 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards' , 'ngCordova'
     });
     /* ----------------------------------- */
 
+     $stateProvider.state('chatassist-angular', {
+      url: '/chatassist-angular',
+      views: { 'tab-chatassist-angular': { templateUrl: 'templates/chatassist-angular.html' } }
+    });
+    /* ----------------------------------- */
+
+
     $stateProvider.state('chatassist', {
       url: '/chatassist',
       views: { 'tab-chatassist': { templateUrl: 'templates/chatassist.html' } }
+    });
+
+    $stateProvider.state('chatassist-static', {
+      url: '/chatassist-static',
+      views: { 'tab-chatassist-static': { templateUrl: 'templates/chatassist-static.html' } }
     });
 
     $stateProvider.state('settings', {
@@ -136,43 +148,127 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards' , 'ngCordova'
     }
   })
 
-.controller('Messages', function($scope, $timeout, $ionicScrollDelegate) {
-  $scope.hideTime = true;
-  var alternate,
-    isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
-  $scope.sendMessage = function() {
-    alternate = !alternate;
-    var d = new Date();
-  d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
 
-    $scope.messages.push({
-      userId: alternate ? '12345' : '54321',
-      text: $scope.data.message,
-      time: d
-    });
-    delete $scope.data.message;
+// .controller("DIController", function($scope, $timeout){
+
+//     $scope.callAtTimeout = function() {
+//         console.log("$scope.callAtTimeout - Timeout occurred");
+//     }
+
+//     $timeout( function(){ $scope.callAtTimeout(); }, 3000);
+// })
+// ----------------------------------------------------------------------------------------
+
+.controller('MessageCtrl', function($scope, $timeout, $ionicScrollDelegate) { 
+
+  $scope.sendMessage = function() {    
     $ionicScrollDelegate.scrollBottom(true);
-
+  
+  // Ugh - think more on this...
+  //   $timeout(function() {
+  //       var x =  angular.element( document.getElementById("chat1") );
+  //       x.addClass('slide-right');
+  // }, 10);  
+  
   };
-  $scope.inputUp = function() {
-    if (isIOS) $scope.data.keyboardHeight = 216;
-    $timeout(function() {
-      $ionicScrollDelegate.scrollBottom(true);
-    }, 300);
-
-  };
-  $scope.inputDown = function() {
-    if (isIOS) $scope.data.keyboardHeight = 0;
-    $ionicScrollDelegate.resize();
-  };
-  $scope.closeKeyboard = function() {
-    // cordova.plugins.Keyboard.close();
-  };
-  $scope.data = {};
-  $scope.myId = '12345';
-  $scope.messages = [];
 
 })
+.directive("sendbutton", function(){
+  return {
+    restrict: "E",
+    template: "<button processanswer class='button button-clear app-color chat-button-position' ng-click='sendMessage()'>Send</button>"
+  }
+})
+.directive("processanswer", function($compile, $animate){
+  return function(scope, element, attrs){
+    element.bind("click", function(){
+
+      if (scope.inputVal == "Manager") {
+        angular
+          .element(document.getElementById('chat'))
+          .append($compile("<div class='messages other'><p id='chat1' class='message slide-right'>" + scope.inputVal +"</p></div><div class='messages'><p class='message'>I see you've typed <i>Manager</i>. Please add the location you are seeking:</p></div>")(scope));
+        clearInput();
+      }
+      //-------------------------------
+      if (scope.inputVal == "New York") {
+        angular
+          .element(document.getElementById('chat'))
+          .append($compile("<div class='messages other'><p class='message slide-right'>" + scope.inputVal +"</p></div><div class='messages'><p class='message'>I see you've typed <i>New York</i>. Would you like to have your assigned recruiter 'ANGELA MORENO' call you?</p>")(scope));
+        clearInput();
+      }
+      //-------------------------------
+      if (scope.inputVal == "Yes, please call me") {
+        angular
+          .element(document.getElementById('chat'))
+          .append($compile("<div class='messages other slide-right'><p class='message slide-right'>" + scope.inputVal +"</p></div><div class='messages'><p class='message'>Great! You will hear from 'ANGELA MORENO' shortly about positions in New York. Would you like to see job based on your current criteria?</p>")(scope));
+        clearInput();
+      }
+      //-------------------------------
+      if (scope.inputVal == "Yes, please show me jobs") {
+        angular
+          .element(document.getElementById('chat'))
+          .append($compile("<div class='messages other slide-right'><p class='message slide-right'>" + scope.inputVal +"</p></div><div class='messages'><p class='message'>Here's a <a ng-href='#/swipe'>list of jobs</a>  based on your criteria. You can also <a ng-href='#/settings'>adjust your job preference settings</a>.</p>")(scope));
+        clearInput();
+      }
+    });
+  };
+})
+
+
+//-----------------------------------------------------------------------------------------
+
+// Populate array on screen
+// .controller("MessageCtrl", function($scope){
+//  $scope.name="Anonymous"
+//     $scope.fruits=[];
+//     $scope.addFruit=function(){
+//         $scope.fruits.push($scope.newFruit);
+//     }
+// })
+
+
+// Original message display
+// .controller('Messages', function($scope, $timeout, $ionicScrollDelegate) {
+//   $scope.hideTime = true;
+//   var alternate,
+//     isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
+  
+//     $scope.sendMessage = function() {
+//       alternate = !alternate;
+//       var d = new Date();
+//       d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+
+//       $scope.messages.push({
+//         userId: alternate ? '12345' : '54321',
+//         text: $scope.data.message,
+//         time: d
+//       });
+
+//       delete $scope.data.message;
+//       $ionicScrollDelegate.scrollBottom(true);
+//     };
+    
+//     $scope.inputUp = function() {
+//       if (isIOS) $scope.data.keyboardHeight = 216;
+//       $timeout(function() {
+//         $ionicScrollDelegate.scrollBottom(true);
+//       }, 300);
+
+//     };
+
+//     $scope.inputDown = function() {
+//       if (isIOS) $scope.data.keyboardHeight = 0;
+//       $ionicScrollDelegate.resize();
+//     };
+
+//     $scope.closeKeyboard = function() {
+//       // cordova.plugins.Keyboard.close();
+//     };
+
+//     $scope.data = {};
+//     $scope.myId = '12345';
+//     $scope.messages = [];
+// })
 
 
   // MapCtrl ------------------------------------------
@@ -241,6 +337,34 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards' , 'ngCordova'
       });
   });
 
+
+//---------------------------------------------------------------------
+// TODO: Learn how to oncorporate these into the controller/directive
+// Datalist function
+(function(window,document) {
+  if (document.querySelectorAll) {
+    var inputs = document.querySelectorAll('input[list]'),
+        total = inputs.length;
+    for (var i=0; i<total; i++) {
+      var input = inputs[i],
+        id = input.getAttribute('list'),
+        list = document.getElementById(id),
+        options = list.getElementsByTagName('option'),
+        amount = options.length,
+        //rand = Math.floor(Math.random()*amount),
+        // option = options[rand],
+        value = option.getAttribute('value');
+      input.setAttribute('placeholder',value);
+    }
+  }
+})(this,this.document);
+
+// For chat assist input - because datalist value remains
+function clearInput() {
+  var x =  document.getElementById("inputVal");
+    x.value = "";
+}
+
 // For file browser - browser only - we'll probably use a GDoc,
 // or other API to link to, upload, share a resume
 // Remove for PROD!
@@ -253,3 +377,6 @@ function handleChange() {
   var textinput = document.getElementById("filename");
   textinput.value = fileinput.value;
 }
+
+
+

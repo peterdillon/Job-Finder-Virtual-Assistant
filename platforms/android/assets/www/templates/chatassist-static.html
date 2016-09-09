@@ -1,0 +1,56 @@
+<ion-pane class="messaging-view padding">
+<ion-content class="content-stable">
+
+    
+    <ng-message ng-controller="MessageCtrl">
+        <!-- 
+        Name: <input type="text" ng-model="name">
+        <select ng-model="selectedFruit" ng-options="fruit for fruit in fruits track by fruit.id"></select>
+        Name: {{name}} <br />
+        Selected fruit : {{selectedFruit}} -->
+
+        <div class="messages">
+          <p class="message">Welcome to the Adecco Virtual Assitant. Please enter the job title you are looking for.</p>
+        </div> 
+
+        <div class="messages other"  ng-repeat="fruit in fruits track by $index">
+          <p class="message  slide-right">{{fruit}}</p>
+        </div>  
+
+        <div class="messages">
+            <p class="message  slide-right"><a href="http://peterdoes.it/Adecco-Chat-Prototype/" class="app-color">View jQuery chat prototype</a></p>
+        </div>
+
+
+
+        <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" ng-model="newFruit" list="answers">
+            <datalist id="answers">
+              <option value="Manager">
+              <option value="New York">
+              <option value="France">
+              <option value="Yes call me">
+              <option value="Yes please show me jobs">
+              <option value="No">
+              <option value="Show me jobs">
+              <option value="Temporary">
+              <option value="Full Time">        
+            </datalist>
+          </label>
+          <button class="button button-clear app-color" ng-click="addFruit()" >Send</button> 
+
+    </ng-message>
+
+      <!--  
+      <div class="simple-button" ng-click="change()">click me!</div>
+      <addbuttonsbutton></addbuttonsbutton>
+      <button class="button button-clear app-color" ng-click="add()" >Add</button>
+      <button class="button button-clear app-color" id="sendMsg">Send</button>  
+      -->
+
+
+
+  </ion-footer-bar>
+</ion-content>
+</ion-pane>

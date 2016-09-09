@@ -2,12 +2,14 @@
   display: flex;
   align-content: center;
   align-items: center;
+  margin: 0 0 1rem 0;
+  &:first-child { margin-top: 2rem; }
 
   .message {
     margin: 1rem;
     flex: 1 1 auto;
     padding: .5rem 1rem;
-    transition: all 250ms ease;
+    transition: all 100ms ease;
     overflow: hidden;
     text-align: left;
     transform: translate3d(0, 0, 0);
@@ -24,10 +26,39 @@
   transform: translate3d(10px, 0, 0);
 
   &.slide-right {
-    transform: translate3d(130px, 0, 0);
+    transform: translate3d(50px, 0, 0);
   }
 
 }
+
+.scroll-content {
+    overflow: visible;
+    
+}
+.bar-footer.item-input-inset {
+    position: absolute;
+    bottom: 29px;
+}
+
+
+.list {
+  width: 100%;
+  select {
+    border: 0;
+    width: 100%;
+    background-color: inherit;
+  }
+  .item-input-wrapper {
+    padding: 5px;
+    display: inline-block;
+    width: 80% !important;
+    margin-top: 2px !important;
+  }
+  .chat-button-position {
+    width: 15% !important;
+  }
+}
+
 //This will change
 .message {
     background: #007AFF;
@@ -37,6 +68,9 @@
     border-radius: 10px;
     text-align: left;
     max-width: 240px;
+    a {
+      color: white ;
+    }
 }
 
 .messages.other {
@@ -44,10 +78,11 @@
   .message {
     transform: translate3d(0, 0, 0);
     text-align: right;
+    float: right;
   }
   
   .message.slide-right {
-    transform: translate3d(120px, 0, 0);
+    transform: translate3d(80px, 0, 0);
   }
   
   .message {
@@ -60,6 +95,34 @@
 .messaging-view {
   top: -1.65rem;
 }
+svg { background-color: #0e0; }
 
+// ellipsis animation
+.loading { font-size: 30px; }
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+  animation: ellipsis steps(4,end) 900ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+@keyframes ellipsis {
+  to {
+    width: 1.25em;    
+  }
+}
+i {
+  font-style: italic;
+}
+
+
+
+.fade { transition: .2s linear all; }
+.fade.ng-enter { opacity: 0; }
+.fade.ng-enter.ng-enter-active { opacity: 1; }
+.fade.ng-leave { opacity: 1; }
+.fade.ng-leave.ng-leave-active { opacity: 0; }
 
 
