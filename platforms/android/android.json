@@ -55,9 +55,6 @@
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.ionicframework.tabsapp772462"
         },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.ionicframework.tabsapp772462"
-        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.tabsapp772462"
         },

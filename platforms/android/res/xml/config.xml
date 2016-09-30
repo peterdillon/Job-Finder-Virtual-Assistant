@@ -45,8 +45,8 @@
     <description>
         An Ionic Framework and Cordova project.
     </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+    <author email="peter.dillon.biz@gmail.com" href="http://peterdoes.it/">
+      Peter Dillon Application Team
     </author>
     <content src="index.html" />
     <access origin="*" />

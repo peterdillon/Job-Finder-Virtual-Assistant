@@ -1,0 +1,55 @@
+<ion-pane class="messaging-view" ng-controller="MessageCtrl" >
+<ion-content class="content-stable">
+
+    
+    <ng-message id="chat" delegate-handle="chatScroll">
+
+    
+      <div class="messages">
+      <p class="message">Welcome to the Adecco Virtual Assitant. 
+        Please enter the job title you are looking for.</p>
+      </div>
+    
+
+</ion-content>
+
+        <ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
+         
+
+
+      <div class="list">
+
+        <label class="item-input-wrapper">
+          <select id="inputVal" ng-model="inputVal">
+              <option value="Manager">Manager</option>
+              <option value="New York">New York</option>
+              <option value="Yes, please call me">Yes, please call me</option>
+              <option value="Yes, please show me jobs">Yes, please show me jobs</option>
+          </select>
+        </label>
+        <sendbutton></sendbutton> 
+
+      </div>
+
+
+
+         <!--  <label class="item-input-wrapper">
+            <input type="text" id="inputVal" ng-model="inputVal" list="answers" onfocus="blur();">
+            <datalist id="answers">
+              <option value="Manager">
+              <option value="New York">
+              <option value="Yes, please call me">
+              <option value="Yes, please show me jobs">
+            </datalist>
+            </label>
+            <sendbutton></sendbutton> -->
+         
+
+    </ng-message>
+
+  
+
+
+  </ion-footer-bar>
+
+</ion-pane>
