@@ -148,31 +148,12 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards' , 'ngCordova'
     }
   })
 
-
-// .controller("DIController", function($scope, $timeout){
-
-//     $scope.callAtTimeout = function() {
-//         console.log("$scope.callAtTimeout - Timeout occurred");
-//     }
-
-//     $timeout( function(){ $scope.callAtTimeout(); }, 3000);
-// })
-// ----------------------------------------------------------------------------------------
-
 .controller('MessageCtrl', function($scope, $timeout, $ionicScrollDelegate) { 
-
   $scope.sendMessage = function() {    
     $ionicScrollDelegate.scrollBottom(true);
-  
-  // Ugh - think more on this...
-  //   $timeout(function() {
-  //       var x =  angular.element( document.getElementById("chat1") );
-  //       x.addClass('slide-right');
-  // }, 10);  
-  
   };
-
 })
+
 .directive("sendbutton", function(){
   return {
     restrict: "E",
@@ -250,8 +231,6 @@ angular.module('starter', ['ionic', 'ionic.contrib.ui.tinderCards' , 'ngCordova'
 
 
 })
-
-
 
 // END MapCtrl ------------------------------------------
   .controller('CardsCtrl', function($scope, TDCardDelegate) {
