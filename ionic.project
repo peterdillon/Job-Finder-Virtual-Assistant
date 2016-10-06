@@ -1,4 +1,5 @@
 {
-  "name": "tabs-app",
-  "app_id": ""
+  "name": "Job Finder Virtual Assistant",
+  "app_id": "",
+  gulpStartupTasks": ["sass", "watch"]
 }
